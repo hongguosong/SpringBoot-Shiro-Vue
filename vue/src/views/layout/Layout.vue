@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-    <sidebar class="sidebar-container"></sidebar>
+    <navbar class="nav-container"></navbar>
     <div class="main-container">
-      <navbar></navbar>
+      <sidebar class="sidebar-container" v-show="sidebar.opened"></sidebar>
       <app-main></app-main>
     </div>
   </div>
@@ -33,5 +33,8 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+}
+.nav-container {
+  // background-color: #EED5D2;
 }
 </style>

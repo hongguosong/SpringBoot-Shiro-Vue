@@ -8,7 +8,8 @@ const user = {
   state: {
     nickname: "",
     userId: "",
-    avatar: 'https://www.gravatar.com/avatar/6560ed55e62396e40b34aac1e5041028',
+    // avatar: 'https://www.gravatar.com/avatar/6560ed55e62396e40b34aac1e5041028',
+    avatar: 'src/images/ta.png',
     role: '',
     menus: [],
     permissions: [],

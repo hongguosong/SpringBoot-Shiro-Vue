@@ -60,4 +60,11 @@ public class ArticleServiceImpl implements ArticleService {
         articleDao.updateArticle(jsonObject);
         return CommonUtil.successJson();
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public JSONObject deleteArticle(JSONObject jsonObject) {
+        articleDao.deleteArticle(jsonObject);
+        return CommonUtil.successJson();
+    }
 }

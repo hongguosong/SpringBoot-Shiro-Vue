@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
@@ -38,6 +39,32 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        String guide = req.getRequestURI();
+//        if(guide.contains("gs-guide-websocket")){
+//            HttpServletResponse res = (HttpServletResponse) response;
+//            res.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+//            res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
+//            res.setHeader("Access-Control-Max-Age", "3600");
+//            res.setHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type");
+//            res.setHeader("Access-Control-Allow-Credentials", "true");
+//        }
+        return super.onPreHandle(request, response, mappedValue);
+    }
+
+    @Override
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+//        System.out.println(request);
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        String guide = req.getRequestURI();
+//        if(guide.contains("gs-guide-websocket")){
+//            return true;
+//        }
+        return super.isAccessAllowed(request, response, mappedValue);
     }
 
     @Bean

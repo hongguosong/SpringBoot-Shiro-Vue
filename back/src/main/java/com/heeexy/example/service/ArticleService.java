@@ -30,4 +30,11 @@ public interface ArticleService {
      * @return
      */
     JSONObject updateArticle(JSONObject jsonObject);
+
+    /**
+     * 删除文章
+     * @param jsonObject
+     * @return
+     */
+    JSONObject deleteArticle(JSONObject jsonObject);
 }

@@ -4,7 +4,9 @@
     <breadcrumb></breadcrumb>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
-        <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
+        <span class="user-nickname">{{nickname}}</span>
+        <!--<img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">-->
+        <img class="user-avatar" :src="avatar">
         <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
@@ -34,7 +36,8 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'nickname'
     ])
   },
   methods: {
@@ -52,6 +55,11 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1999;
   height: 50px;
   line-height: 50px;
   border-radius: 0px !important;
@@ -81,10 +89,16 @@ export default {
         height: 40px;
         border-radius: 10px;
       }
+      .user-nickname {
+        padding: 10px 0;
+        position: relative;
+        top: -15px;
+        margin-right: 10px;
+      }
       .el-icon-caret-bottom {
-        position: absolute;
+        position: relative;
         right: -20px;
-        top: 25px;
+        top: -15px;
         font-size: 12px;
       }
     }

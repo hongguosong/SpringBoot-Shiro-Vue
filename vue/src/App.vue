@@ -6,7 +6,19 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    handler: function () {
+      
+    }
+  },
+  mounted () {
+    // this.websocket.initWebSocket()
+    document.addEventListener('mousewheel', this.handler, {passive: true});
+  },
+  beforeDestroy () {
+    // this.websocket.close()
+  }
 }
 </script>
 

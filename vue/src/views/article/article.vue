@@ -9,7 +9,7 @@
       </el-form>
     </div>
     <el-table :data="list" v-loading.body="listLoading" element-loading-text="拼命加载中" border fit
-              highlight-current-row>
+              highlight-current-row size="mini">
       <el-table-column align="center" label="序号" width="80">
         <template slot-scope="scope">
           <span v-text="getIndex(scope.$index)"> </span>
@@ -23,13 +23,16 @@
       </el-table-column>
       <el-table-column align="center" label="管理" width="200" v-if="hasPerm('article:update')">
         <template slot-scope="scope">
-          <el-button type="primary" icon="edit" @click="showUpdate(scope.$index)">修改</el-button>
+          <el-button type="primary" icon="edit" @click="showUpdate(scope.$index)" size="mini">修改</el-button>
+          <el-button type="danger" icon="delete" @click="deleteArticle(scope.$index)" size="mini" v-if="hasPerm('article:delete')">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-pagination
+      class="pagination"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
+      background
       :current-page="listQuery.pageNum"
       :page-size="listQuery.pageRow"
       :total="totalCount"
@@ -37,7 +40,7 @@
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-form class="small-space" :model="tempArticle" label-position="left" label-width="60px"
+      <el-form class="small-space" :model="tempArticle" label-position="left" label-width="80px"
                style='width: 300px; margin-left:50px;'>
         <el-form-item label="文章">
           <el-input type="text" v-model="tempArticle.content">
@@ -145,6 +148,23 @@
           this.dialogFormVisible = false
         })
       },
+      deleteArticle($index) {
+        this.tempArticle.id = this.list[$index].id;
+        this.tempArticle.content = this.list[$index].content;
+
+        // 删除文章
+        this.api({
+          url: "/article/deleteArticle",
+          method: 'post',
+          data: this.tempArticle
+        }).then(() => {
+          this.getList()
+        })
+      }
     }
   }
 </script>
+
+<style>
+
+</style>

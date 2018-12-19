@@ -41,4 +41,11 @@ public interface ArticleDao {
      * @return
      */
     int updateArticle(JSONObject jsonObject);
+
+    /**
+     *删除文章
+     * @param jsonObject
+     * @return
+     */
+    int deleteArticle(JSONObject jsonObject);
 }

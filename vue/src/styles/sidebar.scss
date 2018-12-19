@@ -4,15 +4,17 @@
     min-height: 100%;
     transition: margin-left 0.28s;
     margin-left: 180px;
+    margin-top: 50px;
   } // 侧边栏
   .sidebar-container {
     transition: width 0.28s;
     width: 180px!important;
     height: 100%;
     position: fixed;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
+    color: black;
     z-index: 1001;
     a {
       display: inline-block;
@@ -32,7 +34,8 @@
       // overflow: inherit;
     }
     .main-container {
-      margin-left: 36px;
+      margin-left: 0px;
+      margin-top: 50px;
     }
   }
   .hideSidebar {
