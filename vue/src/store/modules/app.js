@@ -32,7 +32,8 @@ const app = {
     }
   },
   actions: {
-    ToggleSideBar({ commit }) {
+    ToggleSideBar({ commit , rootState}) {
+      console.log(rootState.count)
       commit('TOGGLE_SIDEBAR')
     },
     addVisitedViews({ commit }, view) {

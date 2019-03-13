@@ -1,6 +1,6 @@
 spring:
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/example?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
       password: test
@@ -11,6 +11,6 @@ mybatis:
 server:
   port: 8080
   address: localhost
-context:
-  listener:
-    classes: com.heeexy.example.event.InitData
+#context:
+#  listener:
+#    classes: com.heeexy.example.event.InitDataListener

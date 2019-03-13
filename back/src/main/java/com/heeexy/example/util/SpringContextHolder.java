@@ -1,6 +1,7 @@
 package com.heeexy.example.util;
 
 //import com.hr.cim.ice.IceServiceEntrance;
+import com.heeexy.example.ice.IceServiceEntrance;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +78,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     @Override
     public void destroy() throws Exception {
         SpringContextHolder.clearHolder();
-//        IceServiceEntrance.getInstance().waitForShutdown();
+        IceServiceEntrance.getInstance().waitForShutdown();
     }
 
     /**

@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.heeexy.example.service.LoginService;
 import com.heeexy.example.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: hxy
@@ -27,6 +24,7 @@ public class LoginController {
      * @param requestJson
      * @return
      */
+//    @CrossOrigin
     @PostMapping("/auth")
     public JSONObject authLogin(@RequestBody JSONObject requestJson) {
         CommonUtil.hasAllRequired(requestJson, "username,password");
@@ -38,6 +36,7 @@ public class LoginController {
      *
      * @return
      */
+//    @CrossOrigin
     @PostMapping("/getInfo")
     public JSONObject getInfo() {
         return loginService.getInfo();
@@ -48,6 +47,7 @@ public class LoginController {
      *
      * @return
      */
+//    @CrossOrigin
     @PostMapping("/logout")
     public JSONObject logout() {
         return loginService.logout();

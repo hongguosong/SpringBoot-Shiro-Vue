@@ -44,4 +44,16 @@ public class CartServiceImpl implements CartService{
         cartDao.updateCart(jsonObject);
         return CommonUtil.successJson();
     }
+
+    @Override
+    public JSONObject addOne(JSONObject jsonObject) {
+        cartDao.addOne(jsonObject);
+        return CommonUtil.successJson();
+    }
+
+    @Override
+    public JSONObject decOne(JSONObject jsonObject) {
+        cartDao.decOne(jsonObject);
+        return CommonUtil.successJson();
+    }
 }

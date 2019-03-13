@@ -12,6 +12,13 @@ import '@/icons' // icon
 import '@/permission' // 权限
 import {default as api} from './utils/api'
 import {hasPermission} from "./utils/hasPermission";
+
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: '9LTvKXR8ywtiqm3qLYh9d6kpFuO7LIYS'
+})
+
 Vue.use(ElementUI, {locale})
 Vue.prototype.api = api
 Vue.prototype.$echarts = echarts
@@ -20,6 +27,7 @@ Vue.prototype.websocket = websocket
 Vue.prototype.hasPerm = hasPermission
 //生产环境时自动设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = (process.env.NODE_ENV != 'production')
+
 new Vue({
   el: '#app',
   router,

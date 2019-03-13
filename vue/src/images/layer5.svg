@@ -1,0 +1,22 @@
+<!--AOI-->
+<svg width="160" height="116" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+	<rect width="160" height="116" stroke="#111" stroke-width="1" fill="#666" />
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="4.666667" y="15.333333" width="149.333333" height="89.666667" id="svg_2"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="16" y="50.666667" width="49" height="54.333333" id="svg_4"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="95" y="50.666667" width="49" height="53.666667" id="svg_5"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="22" y="56.666667" width="36.666667" height="48.333333" id="svg_6"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="101" y="56.666667" width="37" height="48" id="svg_7"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="22.333333" y1="64.333333" x2="58.704873" y2="64.333333" id="svg_8"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="101.666667" y1="64.333333" x2="138.038206" y2="64.333333" id="svg_9"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="16" y1="98.666667" x2="21.676462" y2="98.666667" id="svg_10"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="59" y1="99.666667" x2="64.34374" y2="99.666667" id="svg_11"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="95" y1="100.333333" x2="100.666667" y2="100.333333" id="svg_12"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="138.666667" y1="99.666667" x2="144.010407" y2="99.666667" id="svg_13"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="65.333333" y1="56.333333" x2="94.668561" y2="56.333333" id="svg_14"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="64.666667" y1="50.666667" x2="96.001773" y2="50.666667" id="svg_16"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="5.333333" y1="25.333333" x2="153.750912" y2="25.333333" id="svg_17"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="49.666667" y1="16.333333" x2="49.666667" y2="24" id="svg_18"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="98.666667" y1="16" x2="98.666667" y2="24.724168" id="svg_19"/>
+ </g>
+</svg>

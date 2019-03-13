@@ -5,6 +5,10 @@
     transition: margin-left 0.28s;
     margin-left: 180px;
     margin-top: 50px;
+
+    .main-container {
+      margin-left: 0;
+    }
   } // 侧边栏
   .sidebar-container {
     transition: width 0.28s;
@@ -95,6 +99,7 @@
     background-color: $subMenuBg!important;
     &:hover {
       background-color: $menuHover!important;
+      color: black!important;
     }
   }
   .el-menu--collapse .el-menu .el-submenu{

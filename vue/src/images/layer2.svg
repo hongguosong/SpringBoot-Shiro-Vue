@@ -1,0 +1,31 @@
+<!--ASSY TEST-->
+<svg width="170" height="109" xmlns="http://www.w3.org/2000/svg"> 
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect width="170" height="109" stroke="#111" stroke-width="1" fill="#666" />
+    <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="0" y="0" width="165" height="85" id="svg_2"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="7.25" y="44.0127" width="35" height="38" id="svg_2"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="7.25" y="44" width="35" height="38.25" id="svg_4"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="11.5" y="48.4873" width="26.5" height="33.75" id="svg_5"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="11.5" y1="54" x2="37.54323" y2="54" id="svg_6"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="7.5" y1="77.75" x2="11.28319" y2="77.75" id="svg_7"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="38" y1="78.5" x2="41.75832" y2="78.5" id="svg_9"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="41.75" y1="44" x2="162.43062" y2="44" id="svg_11"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="47.5" y="43.7627" width="35" height="38.25" id="svg_12"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="87.5" y="43.75" width="34.75" height="38.5" id="svg_13"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="128" y="43.75" width="34.5" height="38.75" id="svg_14"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="51.75" y="47.77539" width="26.25" height="34.25" id="svg_15"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="92" y="48.25" width="26" height="33.75" id="svg_16"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="132.5" y="48.25" width="25.5" height="34" id="svg_17"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="52" y1="54.25" x2="78.01081" y2="54.25" id="svg_18"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="92.25" y1="54.25" x2="118.00485" y2="54.25" id="svg_19"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="132.5" y1="54" x2="158.31182" y2="54" id="svg_20"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="48" y1="78.25" x2="51.75" y2="78.25" id="svg_21"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="77.75" y1="78.75" x2="82" y2="78.75" id="svg_22"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="88" y1="78" x2="91.75" y2="78" id="svg_23"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="118" y1="78.75" x2="122.00781" y2="78.75" id="svg_24"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="127.75" y1="78" x2="131.78113" y2="78" id="svg_25"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="158.25" y1="78.75" x2="162.25" y2="78.75" id="svg_26"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="47.5" y="20.25" width="75" height="23.5" id="svg_27"/>
+ </g>
+</svg>

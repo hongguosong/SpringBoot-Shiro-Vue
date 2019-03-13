@@ -9,4 +9,6 @@ public interface CartService {
     JSONObject addCart(JSONObject jsonObject);
     JSONObject deleteCart(JSONObject jsonObject);
     JSONObject updateCart(JSONObject jsonObject);
+    JSONObject addOne(JSONObject jsonObject);
+    JSONObject decOne(JSONObject jsonObject);
 }

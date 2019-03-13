@@ -22,7 +22,8 @@ export const constantRouterMap = [
 ]
 var alertVue = import('../views/study/alert/Alert.vue')
 export default new Router({
-  // mode: 'history', //后端支持可开
+  mode: 'history', //后端支持可开
+  //base: 'vue',
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
@@ -103,6 +104,27 @@ export const asyncRouterMap = [
         component: _import('business/Thermometer'),
         meta: {title: '温度计', icon: 'form'},
         menu: 'Thermometer'
+      },
+      {
+        path: 'Factory',
+        name: '工厂',
+        component: _import('business/Factory'),
+        meta: {title: '工厂', icon: 'form'},
+        menu: 'Factory'
+      },
+      {
+        path: 'Floor',
+        name: '地板',
+        component: _import('business/Floor'),
+        meta: {title: '地板', icon: 'form'},
+        menu: 'Floor'
+      },
+      {
+        path: 'Floor2',
+        name: '地板2',
+        component: _import('business/Floor2'),
+        meta: {title: '地板2', icon: 'form'},
+        menu: 'Floor2'
       }
     ]
   },
@@ -126,6 +148,22 @@ export const asyncRouterMap = [
         component: _import('study/prop/my-prop'),
         meta: {title: "属性", icon: 'form'},
         menu: 'prop'
+      },
+      {
+        path: 'vuex',
+        name: 'vuex',
+        component: _import('study/vuex/vuex'),
+        meta: {title: "vuex", icon: 'form'},
+        menu: 'vuex'
+      },
+      {
+
+        path: 'router/:id',
+        name: 'router',
+        component: _import('study/router/router'),
+        meta: {title: "router", icon: 'form'},
+        props: true,
+        menu: 'router'
       }
     ]
   },
@@ -265,6 +303,36 @@ export const asyncRouterMap = [
             menu: 'badge'
           }
         ]
+      },
+      {
+        path: '/navigation',
+        component: Layout,
+        redirect: '/navigation/navmenu',
+        name: '导航',
+        meta: {title: '导航', icon: 'map'},
+        children: [
+          {
+            path: 'navmenu',
+            name: '导航条',
+            component: _import('study/navigation/NavMenu'),
+            meta: {title: '导航条', icon: 'map'},
+            menu: 'navmenu'
+          },
+          {
+            path: 'tabs',
+            name: '标签页',
+            component: _import('study/navigation/Tabs'),
+            meta: {title: '标签页', icon: 'map'},
+            menu: 'tabs'
+          },
+          {
+            path: 'steps',
+            name: '步骤',
+            component: _import('study/navigation/Steps'),
+            meta: {title: '步骤', icon: 'map'},
+            menu: 'steps'
+          }
+        ]
       }
     ]
   },
@@ -287,8 +355,24 @@ export const asyncRouterMap = [
         name: '权限管理',
         component: _import('user/role'),
         meta: {title: '权限管理', icon: 'password'},
-        menu: 'role'
+        menu: 'role',
       },
+    ]
+  },
+  {
+    path: '/map',
+    redirect: '/map/baidu',
+    name: '地图',
+    meta: {title: '地图', icon: 'table'},
+    component: Layout,
+    children: [
+      {
+        path: 'baidu',
+        name: '百度地图',
+        component: _import('map/baidu_map'),
+        meta: {title: '百度地图', icon: 'table'},
+        menu: 'baidu'
+      }
     ]
   },
   {path: '*', redirect: '/404', hidden: true}

@@ -69,6 +69,9 @@ export default {
   name: 'cost',
   data () {
     return {
+      lastBar: null,
+      classifyBar: null,
+      itemPie: null,
       cardBody: {
         padding: '0px'
       },
@@ -99,7 +102,6 @@ export default {
   },
   methods: {
     drawLastBar: function () {
-      let lastBar = this.$echarts.init(document.getElementById('lastBar'))
       let option = {
         title: {
           text: '最近6个月费用',
@@ -148,11 +150,10 @@ export default {
           '#836FFF', '#7CCD7C', '#CD69C9', '#B3EE3A', '#7D26CD'
         ]
       }
-      lastBar.setOption(option)
-      lastBar.resize()
+      this.lastBar.setOption(option)
+      this.lastBar.resize()
     },
     drawClassifyBar: function () {
-      let classifyBar = this.$echarts.init(document.getElementById('classifyBar'))
       let option = {
         title: {
           text: '分类费用',
@@ -201,11 +202,10 @@ export default {
           '#CD69C9', '#B3EE3A', '#7D26CD'
         ]
       }
-      classifyBar.setOption(option)
-      classifyBar.resize()
+      this.classifyBar.setOption(option)
+      this.classifyBar.resize()
     },
     drawItemPie: function () {
-      let itemPie = this.$echarts.init(document.getElementById('itemPie'))
       let option = {
         title: {
           text: '分项费用',
@@ -257,8 +257,8 @@ export default {
           }
         ]
       }
-      itemPie.setOption(option)
-      itemPie.resize()
+      this.itemPie.setOption(option)
+      this.itemPie.resize()
     },
     temp: function () {
       this.drawLastBar()
@@ -271,6 +271,9 @@ export default {
     }
   },
   mounted () {
+    this.lastBar = this.$echarts.init(document.getElementById('lastBar'))
+    this.classifyBar = this.$echarts.init(document.getElementById('classifyBar'))
+    this.itemPie = this.$echarts.init(document.getElementById('itemPie'))
     this.temp()
     window.onresize = this.temp
   }

@@ -35,4 +35,18 @@
         FROM cart w
         WHERE w.delete_status = '1'
     </select>
+
+    <update id="addOne" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE cart
+        SET
+          num = #{num}
+        WHERE id = #{id} AND name= #{name}
+    </update>
+
+    <update id="decOne" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE cart
+        SET
+        num = #{num}
+        WHERE id = #{id} AND name= #{name}
+    </update>
 </mapper>

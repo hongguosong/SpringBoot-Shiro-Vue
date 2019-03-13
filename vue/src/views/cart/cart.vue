@@ -19,8 +19,10 @@
           <span>{{scope.row.num}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="管理" width="200">
+      <el-table-column align="center" label="管理" width="300">
         <template slot-scope="scope">
+          <el-button type="warning" icon="el-icon-plus" size="mini" @click="addOne(scope.$index)" v-if="hasPerm('cart:addOne')"></el-button>
+          <el-button type="warning" icon="el-icon-minus" size="mini" @click="decOne(scope.$index)" v-if="hasPerm('cart:decOne')"></el-button>
           <el-button type="primary" icon="el-icon-edit" @click="showUpdate(scope.$index)" v-if="hasPerm('cart:update')" size="mini">修改</el-button>
           <el-button type="danger" icon="el-icon-delete" @click="deleteCart(scope.$index)" v-if="hasPerm('cart:delete')" size="mini">删除</el-button>
         </template>
@@ -129,6 +131,37 @@ export default {
       }).then(() => {
         this.getList()
       })
+    },
+    addOne: function ($index) {
+      this.tempCart.id = this.list[$index].id
+      this.tempCart.name = this.list[$index].name
+      this.tempCart.num = this.list[$index].num + 1
+      this.api({
+        url: '/cart/addOne',
+        method: 'post',
+        data: this.tempCart
+      }).then(() => {
+        this.getList()
+      })
+    },
+    decOne: function ($index) {
+      if (this.list[$index].num > 0) {
+        this.tempCart.id = this.list[$index].id
+        this.tempCart.name = this.list[$index].name
+        this.tempCart.num = this.list[$index].num - 1
+        this.api({
+          url: '/cart/decOne',
+          method: 'post',
+          data: this.tempCart
+        }).then(() => {
+          this.getList()
+        })
+      } else {
+        this.$message({
+          message: '商品数量不足',
+          type: 'warning'
+        });
+      }
     },
     handleSizeChange: function (val) {
       this.listQuery.pageRow = val

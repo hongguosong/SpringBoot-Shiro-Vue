@@ -3,13 +3,14 @@ import {getToken, removeToken, setToken} from '@/utils/auth'
 import {default as api} from '../../utils/api'
 import store from '../../store'
 import router from '../../router'
+import ta from '@/images/ta.png'
 
 const user = {
   state: {
     nickname: "",
     userId: "",
     // avatar: 'https://www.gravatar.com/avatar/6560ed55e62396e40b34aac1e5041028',
-    avatar: 'src/images/ta.png',
+    avatar: ta,
     role: '',
     menus: [],
     permissions: [],

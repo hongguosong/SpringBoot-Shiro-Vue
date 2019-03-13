@@ -40,4 +40,16 @@ public class CartController {
     public JSONObject deleteCart(@RequestBody JSONObject jsonObject) {
         return cartService.deleteCart(jsonObject);
     }
+
+    @RequiresPermissions("cart:addOne")
+    @PostMapping("/addOne")
+    public JSONObject addOne(@RequestBody JSONObject jsonObject) {
+        return cartService.addOne(jsonObject);
+    }
+
+    @RequiresPermissions("cart:decOne")
+    @PostMapping("/decOne")
+    public JSONObject decOne(@RequestBody JSONObject jsonObject) {
+        return cartService.decOne(jsonObject);
+    }
 }

@@ -57,6 +57,9 @@ export default {
   name: 'energy',
   data () {
     return {
+      energyBar: null,
+      bar: null,
+      pie: null,
       cardBody: {
         padding: '0px'
       },
@@ -114,7 +117,6 @@ export default {
       this.drawEnergyBar(this.dateValue)
     },
     drawEnergyBar: function (dateValue) {
-      let energyBar = this.$echarts.init(document.getElementById('energyBar'))
       let option
       if (dateValue === '当日') {
         option = {
@@ -336,11 +338,10 @@ export default {
           ]
         }
       }
-      energyBar.setOption(option)
-      energyBar.resize()
+      this.energyBar.setOption(option)
+      this.energyBar.resize()
     },
     drawBar: function () {
-      let bar = this.$echarts.init(document.getElementById('elecBar'))
       let option
       if (this.item === '水') {
         option = {
@@ -478,11 +479,10 @@ export default {
           ]
         }
       }
-      bar.setOption(option)
-      bar.resize()
+      this.bar.setOption(option)
+      this.bar.resize()
     },
     drawPie: function () {
-      let pie = this.$echarts.init(document.getElementById('elecPie'))
       let option
       if (this.item === '水') {
         option = {
@@ -628,8 +628,8 @@ export default {
           ]
         }
       }
-      pie.setOption(option)
-      pie.resize()
+      this.pie.setOption(option)
+      this.pie.resize()
     },
 
     temp: function () {
@@ -639,6 +639,9 @@ export default {
     }
   },
   mounted () {
+    this.energyBar = this.$echarts.init(document.getElementById('energyBar'))
+    this.bar = this.$echarts.init(document.getElementById('elecBar'))
+    this.pie = this.$echarts.init(document.getElementById('elecPie'))
     this.temp()
     window.onresize = this.temp
   }

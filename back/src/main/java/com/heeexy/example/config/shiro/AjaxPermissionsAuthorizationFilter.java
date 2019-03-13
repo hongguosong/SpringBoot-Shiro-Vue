@@ -38,7 +38,7 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
                 out.close();
             }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -53,6 +53,16 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
 //            res.setHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type");
 //            res.setHeader("Access-Control-Allow-Credentials", "true");
 //        }
+
+        HttpServletResponse res = (HttpServletResponse) response;
+//        res.setContentType("text/html;charset=UTF-8");
+        res.setHeader("Access-Control-Allow-Origin", "*");
+//        res.setHeader("Access-Control-Allow-Methods", "*");
+//        res.setHeader("Access-Control-Max-Age", "0");
+//        res.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With,userId,token");
+//        res.setHeader("Access-Control-Allow-Credentials", "true");
+//        res.setHeader("XDomainRequestAllowed","1");
+
         return super.onPreHandle(request, response, mappedValue);
     }
 
@@ -64,6 +74,12 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
 //        if(guide.contains("gs-guide-websocket")){
 //            return true;
 //        }
+
+        if (request instanceof HttpServletRequest) {
+            if (((HttpServletRequest) request).getMethod().toUpperCase().equals("OPTIONS")) {
+                return true;
+            }
+        }
         return super.isAccessAllowed(request, response, mappedValue);
     }
 

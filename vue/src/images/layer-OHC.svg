@@ -1,0 +1,10 @@
+<!--OHC-->
+<svg width="170" height="109" xmlns="http://www.w3.org/2000/svg"> 
+ <g class="layer">
+  <title>OHC</title>
+  <rect width="170" height="109" stroke="#111" stroke-width="1" fill="#666" />
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="0" y="0" width="165" height="85" id="svg_1"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="0" y1="25" x2="165" y2="25" id="svg_2"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="0" y1="60" x2="165" y2="60" id="svg_3"/>
+ </g>
+</svg>

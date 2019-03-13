@@ -1,5 +1,9 @@
-import SockJS from 'sockjs-client'
-import Stomp from 'stompjs'
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
+
+import {
+  Notification
+} from 'element-ui';
 
 export default {
   client: null,
@@ -21,7 +25,14 @@ export default {
     this.client.connect(headers, function (frame) {
       that.client.subscribe('/topic/hello', function (data) {
         // let jsoneData = JSON.parse(data.body)
-        console.log(data.body)
+        console.log(data.body);
+        Notification({
+          title: '收到一条来自ICE的消息',
+          message: data.body,
+          type: 'success',
+          offset: 400,
+          showClose: false
+        })
       })
       if (typeof that.connectCallback === 'function') {
         that.connectCallback(that.client)

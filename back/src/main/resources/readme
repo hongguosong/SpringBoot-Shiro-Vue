@@ -1,0 +1,60 @@
+部署方法有三种：
+1，将打包的dist文件夹下的所有文件复制到服务端的static文件夹下，
+    此种方式不能用vue history模式，否则有刷新404问题，
+2，用nginx部署vue dist文件夹，服务端用tomcat部署
+    1)此模式可开启history模式
+    2）
+      vue打包的时候config/index.js里面的
+      //修改assetsPublicPath:'./' ,修改目的是为了解决js找不到的问题,history模式不能加 './' 就用 '/'
+      //否则会报Uncaught SyntaxError: Unexpected token <错误
+      assetsPublicPath: '/',
+    3)nginx配置说明
+
+            listen       8888; #端口号
+            server_name  localhost; #ip地址
+
+            #charset koi8-r;
+
+            #access_log  logs/host.access.log  main;
+    		root  D:/testGit/SpringBoot-Shiro-Vue/vue/dist;
+
+            location / {
+                try_files $uri $uri/ @router;#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
+                index  index.html index.htm;
+            }
+    		#对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件
+            #因此需要rewrite到index.html中，然后交给路由在处理请求资源
+            location @router {
+                rewrite ^.*$ /index.html last;
+            }
+
+    		#配置跨域代理，这里的login，article，cart，user分别是服务端各controller类上的@RequestMapping("/article")代理
+    		location /login {
+                proxy_pass  http://localhost:8080;
+            }
+    		location /article {
+                proxy_pass  http://localhost:8080;
+            }
+    		location /cart {
+                proxy_pass  http://localhost:8080;
+            }
+    		location /user {
+                proxy_pass  http://localhost:8080;
+            }
+
+3, 命令
+    查看端口命令：
+    netstat -aon|findstr "80"
+    tasklist|findstr "2448"?
+    taskkill /F /pid 1408
+    tasklist /fi "imagename eq nginx.exe"
+
+    nginx常用命令：
+    验证配置是否正确: nginx -t
+    查看Nginx的版本号：nginx -V
+    启动Nginx：start nginx
+    快速停止或关闭Nginx：nginx -s stop
+    正常停止或关闭Nginx：nginx -s quit
+    配置文件修改重装载命令：nginx -s reload
+
+

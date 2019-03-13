@@ -1,0 +1,12 @@
+<!--cooling room-->
+<svg width="160" height="116" xmlns="http://www.w3.org/2000/svg">  
+ <g class="layer">
+ <rect width="160" height="116" stroke="#111" stroke-width="1" fill="#666" />
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="13" y="2" width="136.333333" height="111" id="svg_2"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="56" y="72.666667" width="16.333333" height="16.333333" id="svg_3"/>
+  <rect fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="82.666667" y="73" width="26.666667" height="40" id="svg_4"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="13.333333" y1="14" x2="148.947164" y2="14" id="svg_5"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="55.666667" y1="2.333333" x2="55.666667" y2="13.020813" id="svg_6"/>
+  <line fill="none" stroke="#aaa" stroke-width="4" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="99.333333" y1="1.666667" x2="99.333333" y2="14.018005" id="svg_8"/>
+ </g>
+</svg>

@@ -1,0 +1,16 @@
+<!--AGING ROOM-->
+<svg width="220" height="112" xmlns="http://www.w3.org/2000/svg">
+  <g class="layer">
+  <title>Layer 3</title>
+  <rect width="220" height="112" stroke="#111" stroke-width="1" fill="#666" />
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="0" y="0" width="219" height="111" id="svg_2"/>
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="36.666667" y="67" width="25.666667" height="40" id="svg_3"/>
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="160" y="67" width="26.333333" height="40.333333" id="svg_4"/>
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="80" y="68" width="16" height="16" id="svg_5"/>
+  <rect fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="132" y="68" width="16.333333" height="16.666667" id="svg_6"/>
+  <line fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="1" y1="14" x2="220.009132" y2="14" id="svg_7"/>
+  <line fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="51" y1="2.333333" x2="51" y2="12.333333" id="svg_8"/>
+  <line fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="112" y1="2.333333" x2="112" y2="13.686258" id="svg_9"/>
+  <line fill="none" stroke="#aaa" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="169" y1="2.333333" x2="169" y2="13.333333" id="svg_10"/>
+ </g>
+</svg>

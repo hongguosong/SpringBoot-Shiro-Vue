@@ -22,7 +22,7 @@ public class TestService extends Thread{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         while (true) {
             try{
-                Thread.sleep(1000);
+                Thread.sleep(10000);
                 simpMessagingTemplate.convertAndSend("/topic/hello", "hello"+Math.round(Math.random()*100));
                 simpMessagingTemplate.convertAndSend("/topic/tick", sdf.format(new Date()));
             } catch (Exception e) {

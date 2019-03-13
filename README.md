@@ -83,3 +83,6 @@ npm run dev
 
 ## 分配权限页面效果
 ![分配权限页面](http://ots7yt7am.bkt.clouddn.com/blog/role_permission.png)
+
+
+static/img存放项目静态图片

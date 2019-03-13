@@ -2,6 +2,10 @@
   <el-menu class="navbar" mode="horizontal">
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
     <breadcrumb></breadcrumb>
+    <div style="display: inline-block; position: absolute; top:0;right: 200px;">
+      <el-button type="text" icon="el-icon-d-arrow-left" @click="goBack"></el-button>
+      <el-button type="text" icon="el-icon-d-arrow-right" @click="goBefore"></el-button>
+    </div>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <span class="user-nickname">{{nickname}}</span>
@@ -48,6 +52,16 @@ export default {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+    },
+    goBack() {
+      window.history.length > 1
+        ? this.$router.go(-1)
+        : this.$router.push('/')
+    },
+    goBefore() {
+      window.history.length > 1
+        ? this.$router.go(1)
+        : this.$router.push('/')
     }
   }
 }
@@ -103,6 +117,10 @@ export default {
       }
     }
   }
+}
+.el-menu--horizontal {
+  border-right: none;
+  border-bottom: solid 0px #e6e6e6;
 }
 </style>
 
