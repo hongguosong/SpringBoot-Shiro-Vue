@@ -162,7 +162,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'flow',
   data () {
@@ -257,7 +257,7 @@ export default {
           o.style.height = '373px'
         }
       }
-      
+
       let option = {
         title: {
           text: '节假日日均客流量订单',

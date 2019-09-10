@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "navigation-link",
+  name: 'navigation-link',
   data () {
     return {
       url: ''

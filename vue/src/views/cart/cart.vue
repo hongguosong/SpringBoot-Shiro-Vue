@@ -4,6 +4,7 @@
       <el-form>
         <el-form-item>
           <el-button type="primary" icon="el-icon-plus" @click="showCreate" v-if="hasPerm('cart:add')">添加</el-button>
+          <el-button type="primary" icon="el-icon-download" @click="exportToExcel" v-if="hasPerm('cart:add')">导出</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -59,9 +60,10 @@
 </template>
 
 <script>
+import exportToExcel from '@/utils/exportToExcel'
 export default {
-  name: "cart",
-  data() {
+  name: 'cart',
+  data () {
     return {
       totalCount: 0,
       list: [],
@@ -88,8 +90,41 @@ export default {
     this.getList()
   },
   methods: {
+    exportToExcel: function () {
+      var _that = this
+      var obj = {}
+      obj.title = '购物车'
+      obj.data = this.list
+      for (let k = 0; k < obj.data.length; k++) {
+        obj.data[k].id = k + 1
+      }
+      obj.header = ['id', 'name', 'num']
+      obj.columns = ['序号', '名称', '数量']
+      this.api({
+        url: '/miniui/exportGrid2',
+        method: 'post',
+        data: obj,
+        responseType: 'blob'
+      }).then((res) => {
+        // console.log(res)
+        // let blob = new Blob([res], { type: 'application/vnd.ms-excel' })
+        // let objectUrl = URL.createObjectURL(blob)
+        // window.location.href = objectUrl
+
+        // 此处有个坑。这里用content保存文件流，最初是content=res，但下载的test.xls里的内容如下图1，
+        // 检查了下才发现，后端对文件流做了一层封装，所以将content指向res.data即可
+        // 另外，流的转储属于浅拷贝，所以此处的content转储仅仅是便于理解，并没有实际作用=_=
+        const content = res
+        const blob = new Blob([content])// 构造一个blob对象来处理数据
+        var now = new Date()
+        const fileName = 'cart ' + _that.moment(now, 'YYYY_MM_DD HH_mm_ss') + '.xls'
+        exportToExcel(blob, fileName)
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
     getList: function () {
-      if(!this.hasPerm('cart:list')){
+      if (!this.hasPerm('cart:list')) {
         return
       }
       this.listLoading = true
@@ -160,7 +195,7 @@ export default {
         this.$message({
           message: '商品数量不足',
           type: 'warning'
-        });
+        })
       }
     },
     handleSizeChange: function (val) {

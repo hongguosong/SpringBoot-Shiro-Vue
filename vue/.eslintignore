@@ -1,0 +1,7 @@
+node_modules/*
+config/*
+build/*
+dist/*
+static/*
+src/api/ThreeBSP.js
+src/api/Tween.js

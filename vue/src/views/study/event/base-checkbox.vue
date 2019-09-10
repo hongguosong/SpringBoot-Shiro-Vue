@@ -6,16 +6,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'base-checkbox',
-    model: {
-      prop: 'checked',
-      event: 'change'
-    },
-    props: {
-      checked: Boolean
-    }
+export default {
+  name: 'base-checkbox',
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
   }
+}
 </script>
 
 <style scoped>

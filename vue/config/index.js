@@ -6,8 +6,8 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    //修改assetsPublicPath:'./' ,修改目的是为了解决js找不到的问题,history模式不能加 './' 就用 '/'
-    //否则会报Uncaught SyntaxError: Unexpected token <错误
+    // 修改assetsPublicPath:'./' ,修改目的是为了解决js找不到的问题,history模式不能加 './' 就用 '/'
+    // 否则会报Uncaught SyntaxError: Unexpected token <错误
     assetsPublicPath: '/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
@@ -44,6 +44,7 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    useEslint: true
   }
 }

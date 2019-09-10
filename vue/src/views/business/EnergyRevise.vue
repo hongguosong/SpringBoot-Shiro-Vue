@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'energy',
   data () {
@@ -141,11 +141,11 @@ export default {
             left: 'right',
             top: 'center',
             feature: {
-              mark: {show: true},
-              dataView: {show: true, readOnly: false},
-              magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-              restore: {show: true},
-              saveAsImage: {show: true}
+              mark: { show: true },
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+              restore: { show: true },
+              saveAsImage: { show: true }
             }
           },
           xAxis: [
@@ -212,11 +212,11 @@ export default {
             left: 'right',
             top: 'center',
             feature: {
-              mark: {show: true},
-              dataView: {show: true, readOnly: false},
-              magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-              restore: {show: true},
-              saveAsImage: {show: true}
+              mark: { show: true },
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+              restore: { show: true },
+              saveAsImage: { show: true }
             }
           },
           xAxis: [
@@ -290,11 +290,11 @@ export default {
             left: 'right',
             top: 'center',
             feature: {
-              mark: {show: true},
-              dataView: {show: true, readOnly: false},
-              magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-              restore: {show: true},
-              saveAsImage: {show: true}
+              mark: { show: true },
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+              restore: { show: true },
+              saveAsImage: { show: true }
             }
           },
           xAxis: [

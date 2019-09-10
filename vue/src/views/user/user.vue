@@ -35,6 +35,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
+      class="pagination"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="listQuery.pageNum"
@@ -55,7 +56,7 @@
           </el-input>
         </el-form-item>
         <el-form-item label="新密码" v-else>
-          <el-input type="password" v-model="tempUser.password" placeholder="不填则表示不修改">
+          <el-input type="password" v-model="tempUser.password" :disabled="true" placeholder="不填则表示不修改">
           </el-input>
         </el-form-item>
         <el-form-item label="角色" required>
@@ -69,7 +70,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="昵称" required>
-          <el-input type="text" v-model="tempUser.nickname">
+          <el-input type="text" v-model="tempUser.nickname" :disabled="true">
           </el-input>
         </el-form-item>
       </el-form>
@@ -82,161 +83,161 @@
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
-  export default {
-    data() {
-      return {
-        totalCount: 0, //分页组件--数据总条数
-        list: [],//表格的数据
-        listLoading: false,//数据加载等待动画
-        listQuery: {
-          pageNum: 1,//页码
-          pageRow: 50,//每页条数
-        },
-        roles: [],//角色列表
-        dialogStatus: 'create',
-        dialogFormVisible: false,
-        textMap: {
-          update: '编辑',
-          create: '新建用户'
-        },
-        tempUser: {
-          username: '',
-          password: '',
-          nickname: '',
-          roleId: '',
-          userId: ''
-        }
+export default {
+  data () {
+    return {
+      totalCount: 0, // 分页组件--数据总条数
+      list: [], // 表格的数据
+      listLoading: false, // 数据加载等待动画
+      listQuery: {
+        pageNum: 1, // 页码
+        pageRow: 50// 每页条数
+      },
+      roles: [], // 角色列表
+      dialogStatus: 'create',
+      dialogFormVisible: false,
+      textMap: {
+        update: '编辑',
+        create: '新建用户'
+      },
+      tempUser: {
+        username: '',
+        password: '',
+        nickname: '',
+        roleId: '',
+        userId: ''
       }
+    }
+  },
+  created () {
+    this.getList()
+    if (this.hasPerm('user:add') || this.hasPerm('user:update')) {
+      this.getAllRoles()
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'userId'
+    ])
+  },
+  methods: {
+    getAllRoles () {
+      this.api({
+        url: '/user/getAllRoles',
+        method: 'get'
+      }).then(data => {
+        this.roles = data.list
+      })
     },
-    created() {
-      this.getList();
-      if (this.hasPerm('user:add') || this.hasPerm('user:update')) {
-        this.getAllRoles();
-      }
+    getList () {
+      // 查询列表
+      this.listLoading = true
+      this.api({
+        url: '/user/list',
+        method: 'get',
+        params: this.listQuery
+      }).then(data => {
+        this.listLoading = false
+        this.list = data.list
+        this.totalCount = data.totalCount
+      })
     },
-    computed: {
-      ...mapGetters([
-        'userId'
-      ])
+    handleSizeChange (val) {
+      // 改变每页数量
+      this.listQuery.pageRow = val
+      this.handleFilter()
     },
-    methods: {
-      getAllRoles() {
-        this.api({
-          url: "/user/getAllRoles",
-          method: "get"
-        }).then(data => {
-          this.roles = data.list;
-        })
-      },
-      getList() {
-        //查询列表
-        this.listLoading = true;
-        this.api({
-          url: "/user/list",
-          method: "get",
-          params: this.listQuery
-        }).then(data => {
-          this.listLoading = false;
-          this.list = data.list;
-          this.totalCount = data.totalCount;
-        })
-      },
-      handleSizeChange(val) {
-        //改变每页数量
-        this.listQuery.pageRow = val
-        this.handleFilter();
-      },
-      handleCurrentChange(val) {
-        //改变页码
-        this.listQuery.pageNum = val
-        this.getList();
-      },
-      handleFilter() {
-        //查询事件
-        this.listQuery.pageNum = 1
+    handleCurrentChange (val) {
+      // 改变页码
+      this.listQuery.pageNum = val
+      this.getList()
+    },
+    handleFilter () {
+      // 查询事件
+      this.listQuery.pageNum = 1
+      this.getList()
+    },
+    getIndex ($index) {
+      // 表格序号
+      return (this.listQuery.pageNum - 1) * this.listQuery.pageRow + $index + 1
+    },
+    showCreate () {
+      // 显示新增对话框
+      this.tempUser.username = ''
+      this.tempUser.password = ''
+      this.tempUser.nickname = ''
+      this.tempUser.roleId = ''
+      this.tempUser.userId = ''
+      this.dialogStatus = 'create'
+      this.dialogFormVisible = true
+    },
+    showUpdate ($index) {
+      let user = this.list[$index]
+      this.tempUser.username = user.username
+      this.tempUser.nickname = user.nickname
+      this.tempUser.roleId = user.roleId
+      this.tempUser.userId = user.userId
+      this.tempUser.deleteStatus = '1'
+      this.tempUser.password = ''
+      this.dialogStatus = 'update'
+      this.dialogFormVisible = true
+    },
+    createUser () {
+      // 添加新用户
+      this.api({
+        url: '/user/addUser',
+        method: 'post',
+        data: this.tempUser
+      }).then(() => {
         this.getList()
-      },
-      getIndex($index) {
-        //表格序号
-        return (this.listQuery.pageNum - 1) * this.listQuery.pageRow + $index + 1
-      },
-      showCreate() {
-        //显示新增对话框
-        this.tempUser.username = "";
-        this.tempUser.password = "";
-        this.tempUser.nickname = "";
-        this.tempUser.roleId = "";
-        this.tempUser.userId = "";
-        this.dialogStatus = "create"
-        this.dialogFormVisible = true
-      },
-      showUpdate($index) {
-        let user = this.list[$index];
-        this.tempUser.username = user.username;
-        this.tempUser.nickname = user.nickname;
-        this.tempUser.roleId = user.roleId;
-        this.tempUser.userId = user.userId;
-        this.tempUser.deleteStatus = '1';
-        this.tempUser.password = '';
-        this.dialogStatus = "update"
-        this.dialogFormVisible = true
-      },
-      createUser() {
-        //添加新用户
-        this.api({
-          url: "/user/addUser",
-          method: "post",
-          data: this.tempUser
-        }).then(() => {
-          this.getList();
-          this.dialogFormVisible = false
-        })
-      },
-      updateUser() {
-        //修改用户信息
-        let _vue = this;
-        this.api({
-          url: "/user/updateUser",
-          method: "post",
-          data: this.tempUser
-        }).then(() => {
-          let msg = "修改成功";
-          this.dialogFormVisible = false
-          if (this.userId === this.tempUser.userId) {
-            msg = '修改成功,部分信息重新登录后生效'
-          }
-          this.$message({
-            message: msg,
-            type: 'success',
-            duration: 1 * 1000,
-            onClose: () => {
-              _vue.getList();
-            }
-          })
-        })
-      },
-      removeUser($index) {
-        let _vue = this;
-        this.$confirm('确定删除此用户?', '提示', {
-          confirmButtonText: '确定',
-          showCancelButton: false,
-          type: 'warning'
-        }).then(() => {
-          let user = _vue.list[$index];
-          user.deleteStatus = '2';
-          _vue.api({
-            url: "/user/updateUser",
-            method: "post",
-            data: user
-          }).then(() => {
+        this.dialogFormVisible = false
+      })
+    },
+    updateUser () {
+      // 修改用户信息
+      let _vue = this
+      this.api({
+        url: '/user/updateUser',
+        method: 'post',
+        data: this.tempUser
+      }).then(() => {
+        let msg = '修改成功'
+        this.dialogFormVisible = false
+        if (this.userId === this.tempUser.userId) {
+          msg = '修改成功,部分信息重新登录后生效'
+        }
+        this.$message({
+          message: msg,
+          type: 'success',
+          duration: 1 * 1000,
+          onClose: () => {
             _vue.getList()
-          }).catch(() => {
-            _vue.$message.error("删除失败")
-          })
+          }
         })
-      },
+      })
+    },
+    removeUser ($index) {
+      let _vue = this
+      this.$confirm('确定删除此用户?', '提示', {
+        confirmButtonText: '确定',
+        showCancelButton: false,
+        type: 'warning'
+      }).then(() => {
+        let user = _vue.list[$index]
+        user.deleteStatus = '2'
+        _vue.api({
+          url: '/user/updateUser',
+          method: 'post',
+          data: user
+        }).then(() => {
+          _vue.getList()
+        }).catch(() => {
+          _vue.$message.error('删除失败')
+        })
+      })
     }
   }
+}
 </script>

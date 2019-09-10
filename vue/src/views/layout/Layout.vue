@@ -1,31 +1,35 @@
 <template>
   <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-    <navbar class="nav-container" :style="{backgroundImage: mountain}"></navbar>
+    <!--<navbar class="nav-container" :style="{backgroundImage: mountain}"></navbar>-->
+    <navbar class="nav-container"></navbar>
     <div class="main-container">
-      <sidebar class="sidebar-container" v-show="sidebar.opened"></sidebar>
+      <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+        <sidebar class="sidebar-container" v-show="sidebar.opened"></sidebar>
+      </transition>
       <app-main></app-main>
+      <footbar class="foot-container"></footbar>
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from '@/views/layout/components'
+import { Navbar, Sidebar, AppMain, Footbar } from '@/views/layout/components'
 import mountain from '@/images/mountain.jpg'
-
 export default {
   name: 'layout',
   data () {
     return {
-      mountain: 'url('+ mountain + ')'
+      mountain: 'url(' + mountain + ')'
     }
   },
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    Footbar
   },
   computed: {
-    sidebar() {
+    sidebar () {
       return this.$store.state.app.sidebar
     }
   }
@@ -41,6 +45,8 @@ export default {
   width: 100%;
 }
 .nav-container {
-  // background-color: #EED5D2;
+  /*background: linear-gradient(left, #EED5D2, #C7C7E2);*/
+  background: linear-gradient(left, #C7C7E2, white);
+  background: -webkit-gradient(linear, left top, right top, from(#C7C7E2), to(white));
 }
 </style>

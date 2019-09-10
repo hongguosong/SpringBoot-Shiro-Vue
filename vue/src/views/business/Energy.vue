@@ -205,11 +205,11 @@ export default {
           left: 'right',
           top: 'center',
           feature: {
-            mark: {show: true},
-            dataView: {show: true, readOnly: false},
-            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-            restore: {show: true},
-            saveAsImage: {show: true}
+            mark: { show: true },
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
           }
         },
         xAxis: [
@@ -627,19 +627,19 @@ export default {
       this.drawCoalPie()
     },
     statisticsAll: function () {
-      if (this.dateValue === "当月") {
+      if (this.dateValue === '当月') {
         this.energyBarData = [
           [ 32, 45, 56, 47, 20, 46, 106, 132, 115, 126, 117, 110, 116, 136, 112, 55, 56, 67, 30, 16, 46, 86, 63, 214 ],
           [ 32, 45, 52, 47, 20, 46, 106, 132, 115, 126, 117, 110, 126, 129, 112, 55, 56, 67, 30, 76, 46, 96, 83, 214 ],
           [ 32, 45, 56, 47, 20, 16, 106, 132, 115, 126, 517, 110, 136, 156, 112, 55, 56, 67, 30, 66, 46, 56, 93, 214 ]
         ]
-      } else if(this.dateValue === "当日") {
+      } else if (this.dateValue === '当日') {
         this.energyBarData = [
           [ 12, 15, 16, 17, 10, 16, 16, 12, 15, 16, 17, 10, 16, 16, 12, 15, 16, 17, 10, 16, 16, 56, 23, 24 ],
           [ 12, 15, 12, 17, 10, 16, 16, 12, 15, 16, 17, 10, 16, 19, 12, 15, 16, 17, 10, 76, 16, 56, 13, 24 ],
           [ 12, 15, 16, 17, 10, 16, 16, 12, 15, 16, 57, 10, 16, 16, 12, 15, 16, 17, 10, 16, 16, 26, 23, 24 ]
         ]
-      } else if(this.dateValue === "当年") {
+      } else if (this.dateValue === '当年') {
         this.energyBarData = [
           [ 132, 145, 526, 147, 220, 146, 196, 132, 115, 126, 117, 110, 716, 126, 162, 255, 556, 617, 380, 156, 46, 86, 63, 214 ],
           [ 132, 145, 522, 427, 230, 146, 106, 192, 195, 1126, 517, 810, 126, 129, 112, 55, 56, 67, 30, 76, 46, 966, 863, 214 ],
@@ -649,9 +649,9 @@ export default {
       this.drawEnergyBar()
     },
     statisticsItem: function () {
-      for (var i=0; i<this.energyBarData.length; i++) {
-        for(var j=0; j<this.energyBarData[i].length; j++) {
-          this.energyBarData[i][j] += Math.round(Math.random()*100)
+      for (var i = 0; i < this.energyBarData.length; i++) {
+        for (var j = 0; j < this.energyBarData[i].length; j++) {
+          this.energyBarData[i][j] += Math.round(Math.random() * 100)
         }
       }
       this.drawWaterBar()

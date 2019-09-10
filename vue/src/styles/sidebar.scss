@@ -11,7 +11,7 @@
     }
   } // 侧边栏
   .sidebar-container {
-    transition: width 0.28s;
+    //transition: width 0.28s;
     width: 180px!important;
     height: 100%;
     position: fixed;
@@ -20,6 +20,7 @@
     left: 0;
     color: black;
     z-index: 1001;
+    border-right: solid 1px #eee;
     a {
       display: inline-block;
       width: 100%;
@@ -30,6 +31,9 @@
     .el-menu {
       border: none;
       width: 100%;
+      //span {
+      //  font-size: 12px;
+      //}
     }
   }
   .hideSidebar {
@@ -97,9 +101,25 @@
   .el-submenu .el-menu-item {
     min-width: 180px!important;
     background-color: $subMenuBg!important;
+    font-size: 12px;
+    //opacity: 0.8;
+    font-style: italic;
+    border-right: solid 1px #eee;
+    border-bottom: solid 1px #C9C9E3;
     &:hover {
       background-color: $menuHover!important;
       color: black!important;
+    }
+  }
+  .el-submenu {
+    .el-submenu__title {
+      //opacity: 0.7;
+      //border-bottom: solid 1px #C9C9E3;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .el-submenu__icon-arrow {
+      //display: none;
     }
   }
   .el-menu--collapse .el-menu .el-submenu{

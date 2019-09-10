@@ -211,7 +211,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'car',
   data () {
@@ -222,19 +222,19 @@ export default {
       outCar: 99,
       abnormalCar: 20,
       moneyTableData: [
-        {id: 1, name: '西漳停车站', money: 1238},
-        {id: 2, name: '北碚停车站', money: 1238},
-        {id: 3, name: '水土停车站', money: 1238}
+        { id: 1, name: '西漳停车站', money: 1238 },
+        { id: 2, name: '北碚停车站', money: 1238 },
+        { id: 3, name: '水土停车站', money: 1238 }
       ],
       carTableData: [
-        {id: 1, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站'},
-        {id: 2, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站'},
-        {id: 3, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站'}
+        { id: 1, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站' },
+        { id: 2, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站' },
+        { id: 3, nameMax: '西漳停车站', count: 1238, nameMin: '北碚停车站' }
       ],
       alarmTableData: [
-        {id: 1, name: '西漳停车站', position: '一号出口', eqp: '停车泵'},
-        {id: 2, name: '西漳停车站', position: '一号出口', eqp: '停车泵'},
-        {id: 3, name: '西漳停车站', position: '一号出口', eqp: '停车泵'}
+        { id: 1, name: '西漳停车站', position: '一号出口', eqp: '停车泵' },
+        { id: 2, name: '西漳停车站', position: '一号出口', eqp: '停车泵' },
+        { id: 3, name: '西漳停车站', position: '一号出口', eqp: '停车泵' }
       ],
       carportData: [
         [1000, 2000, 3000],
@@ -363,7 +363,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            axisTick: {show: false},
+            axisTick: { show: false },
             data: ['固定', '非固定', '0h~24h实时']
           }
         ],
@@ -434,7 +434,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            axisTick: {show: false},
+            axisTick: { show: false },
             data: ['0h~1h', '1h~2h', '2h~3h', '3h~4h', '4h~15', '5h~6h',
               '6h~7h', '7h~8h', '8h~9h', '9h~10h', '10h~11', '11h~12h',
               '12h~13h', '13h~14h', '14h~15h', '15h~16h', '16h~17h', '17h~18h',
@@ -557,7 +557,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            axisTick: {show: false},
+            axisTick: { show: false },
             // data: ['6-6', '6-7', '6-8', '6-9', '6-10', '6-11', '6-12']
             data: x
           }

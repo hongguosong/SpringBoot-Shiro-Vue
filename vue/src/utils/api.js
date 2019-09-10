@@ -1,11 +1,12 @@
 import axios from 'axios'
-import {Message, MessageBox} from 'element-ui'
-import {getToken} from '@/utils/auth'
+import { Message } from 'element-ui'
+// import { MessageBox } from 'element-ui'
+// import { getToken } from '@/utils/auth'
 import store from '../store'
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_URL, // api的base_url
-  timeout: 15000                  // 请求超时时间2
+  timeout: 15000 // 请求超时时间2
 })
 // request拦截器
 service.interceptors.request.use(config => {
@@ -18,13 +19,22 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    const res = response.data;
-    if (res.returnCode == '1000') {
-      return res;
+    const res = response.data
+    if (typeof (res) === 'string') {
+      return res
     }
-    if (res.returnCode == '100') {
-      return res.returnData;
-    } else if (res.returnCode == "20011") {
+    if (res.logType !== undefined) {
+      return res
+    }
+    if (res.type === 'application/octet-stream') {
+      return res
+    }
+    if (res.returnCode === '1000') {
+      return res
+    }
+    if (res.returnCode === '100') {
+      return res.returnData
+    } else if (res.returnCode === '20011') {
       Message({
         showClose: true,
         message: res.returnMsg,
@@ -35,8 +45,8 @@ service.interceptors.response.use(
             location.reload()// 为了重新实例化vue-router对象 避免bug
           })
         }
-      });
-      return Promise.reject("未登录")
+      })
+      return Promise.reject(new Error('未登录'))
     } else {
       Message({
         message: res.returnMsg,
@@ -56,5 +66,4 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-export default service
-
+export { service }

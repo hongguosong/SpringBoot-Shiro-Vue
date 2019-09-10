@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'cost',
   data () {
@@ -77,9 +77,9 @@ export default {
       },
       itemValue: 'month',
       itemOptions: [
-        {label: '按年查询', value: 'year'},
-        {label: '按月查询', value: 'month'},
-        {label: '按日查询', value: 'date'}
+        { label: '按年查询', value: 'year' },
+        { label: '按月查询', value: 'month' },
+        { label: '按日查询', value: 'date' }
       ],
       dateValue: ''
     }

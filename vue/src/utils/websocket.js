@@ -1,19 +1,22 @@
-import SockJS from 'sockjs-client';
-import Stomp from 'stompjs';
+import SockJS from 'sockjs-client'
+import Stomp from 'stompjs'
 
 import {
   Notification
-} from 'element-ui';
+} from 'element-ui'
 
 export default {
+  api: null,
+  store: null,
   client: null,
   socket: null,
   connectCallback: null,
   closeCallback: null,
   timer: '',
   flag: false,
+  serverURL: '',
   connect: function () {
-    this.socket = new SockJS('http://localhost:8080/gs-guide-websocket', {origins: 'http://127.0.0.1:9520'})
+    this.socket = new SockJS(this.serverURL + '/gs-guide-websocket', { origins: 'http://127.0.0.1:9520' })
     this.client = Stomp.over(this.socket)
     let that = this
     var headers = {
@@ -21,13 +24,13 @@ export default {
       passcode: 'mypasscode',
       // additional header
       'client-id': 'my-client-id'
-    };
+    }
     this.client.connect(headers, function (frame) {
       that.client.subscribe('/topic/hello', function (data) {
         // let jsoneData = JSON.parse(data.body)
-        console.log(data.body);
+        console.log(data.body)
         Notification({
-          title: '收到一条来自ICE的消息',
+          title: '收到一条来自 中心 的消息',
           message: data.body,
           type: 'success',
           offset: 400,
@@ -64,14 +67,14 @@ export default {
   },
   initWebSocket: function () {
     this.connect()
-    // let that = this
-    // this.timer = setInterval(() => {
-    //   try {
-    //     that.client.send('test')
-    //   } catch (err) {
-    //     console.log('断线了' + err)
-    //     that.connect()
-    //   }
-    // }, 100000)
+    let that = this
+    this.timer = setInterval(() => {
+      try {
+        that.client.send('test')
+      } catch (err) {
+        console.log('断线了' + err)
+        that.connect()
+      }
+    }, 100000)
   }
 }

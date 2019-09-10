@@ -67,7 +67,7 @@ export default {
           min: 0,
           max: 130,
           inverse: true,
-          splitArea: {show: false}
+          splitArea: { show: false }
         }],
         xAxis: [{
           show: false,
@@ -85,9 +85,9 @@ export default {
         }, {
           show: false,
           data: [],
-          axisLine: {onZero: true},
-          splitLine: {show: false},
-          splitArea: {show: false}
+          axisLine: { onZero: true },
+          splitLine: { show: false },
+          splitArea: { show: false }
         }],
         series: [{
           name: '条',
