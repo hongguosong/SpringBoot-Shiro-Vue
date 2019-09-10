@@ -22,7 +22,17 @@
 hs_err_pid*
 
 .idea
+out/
+logs/
+upload/
 node_modules/
+node_modules - Copy/
 target/
+dist/
 *.iml
 package-lock.json
+.vscode
+example.iml
+back/src/main/resources/static/static
+back/src/main/resources/static/favicon.ico
+back/src/main/resources/static/index.html

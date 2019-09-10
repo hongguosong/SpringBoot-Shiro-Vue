@@ -10,7 +10,7 @@
 
 
 
-1.  `permission.js`   vue-router的全局拦截器, 如果已登录状态而没有拿到用户的权限属性的话,说明还没查询用户权限信息,初始化动态路由
+1.  `navigationGuard.js`   vue-router的全局拦截器, 如果已登录状态而没有拿到用户的权限属性的话,说明还没查询用户权限信息,初始化动态路由
 
    ```javascript
    if (!store.getters.role) {
