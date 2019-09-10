@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heeexy.example.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.heeexy.example.model.Comment">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <insert id="insert" parameterType="com.heeexy.example.model.Comment">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into comment (article_id, name, content)
+    values (#{articleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+       #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+      id,
+      article_id,
+      name,
+      date_format(create_time, '%Y.%m.%d %T') create_time,
+      content
+    from comment
+  </select>
+  <select id="selectAllByArticleId" parameterType="Integer" resultMap="BaseResultMap">
+    select
+    id,
+    article_id,
+    name,
+    date_format(create_time, '%Y.%m.%d %T') create_time,
+    content
+    from comment
+    where article_id = #{articleId}
+  </select>
+</mapper>

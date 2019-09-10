@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @MapperScan("com.heeexy.example.dao")
+@EnableCaching
 public class MyApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
@@ -24,6 +26,7 @@ public class MyApplication extends SpringBootServletInitializer {
         SpringApplication.run(MyApplication.class, args);
     }
 
+//    //放在tomcat里运行
 //    @Override
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 //        // 注意这里要指向原先用main方法执行的Application启动类

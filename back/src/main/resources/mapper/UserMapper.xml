@@ -66,14 +66,12 @@
     <update id="updateUser">
         UPDATE sys_user
         SET
-        nickname = #{nickname}
-        <if test="password !='' and password !=null">
-            , password = #{password}
+        nickname = #{nickname},
+        avatar = #{avatar}
+        <if test="newPassword !='' and newPassword !=null">
+            , password = #{newPassword}
         </if>
-
-        , role_id = #{roleId}
-        , delete_status = #{deleteStatus}
-        WHERE id = #{userId}
+        WHERE username = #{username}
     </update>
     <resultMap id="roleMap" type="com.heeexy.example.util.model.One2Many">
         <id column="roleId" property="roleId"/>

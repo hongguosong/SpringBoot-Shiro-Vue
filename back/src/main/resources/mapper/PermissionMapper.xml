@@ -7,6 +7,8 @@
         <id column="userId" property="userId"/>
         <result column="nickname" property="nickname"/>
         <result column="roleId" property="roleId"/>
+        <result column="username" property="username"/>
+        <result column="avatar" property="avatar"/>
         <result column="roleName" property="roleName"/>
         <collection property="menuList" ofType="String">
             <id column="menuCode" property="menuCode"/>
@@ -20,6 +22,8 @@
         u.id userId,
         u.nickname nickname,
         u.role_id roleId,
+        u.username username,
+        u.avatar avatar,
         r.role_name roleName,
         p.menu_code menuCode,
         p.permission_code permissionCode

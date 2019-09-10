@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heeexy.example.dao.TodoMapper">
+  <resultMap id="BaseResultMap" type="com.heeexy.example.model.Todo">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
+    <result column="done" jdbcType="BIT" property="done" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.heeexy.example.model.Todo">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into todo (id, name, text, 
+      done, date)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, 
+      #{done,jdbcType=BIT}, #{date,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAllByName" resultMap="BaseResultMap">
+    select id, name, text, done, date
+    from todo
+    where name = #{name}
+  </select>
+  <update id="updateDone">
+    UPDATE todo
+    SET
+    done = #{done}
+    WHERE name = #{name} and text = #{text} and date = #{date}
+  </update>
+
+  <update id="updateAllDone">
+    UPDATE todo
+    SET
+    done = #{done}
+    WHERE name = #{name}
+  </update>
+
+  <update id="updateText">
+    UPDATE todo
+    SET
+    text = #{text}
+    WHERE name = #{name} and done = #{done} and date = #{date}
+  </update>
+
+  <delete id="deleteByNameAndTextAndDoneAndDate">
+    DELETE from todo
+    WHERE name = #{name} AND text = #{text} and done = #{done} and date = #{date}
+  </delete>
+
+  <delete id="deleteByNameAndDone">
+    DELETE form todo
+    WHERE name = #{name} and done = #{done}
+  </delete>
+</mapper>

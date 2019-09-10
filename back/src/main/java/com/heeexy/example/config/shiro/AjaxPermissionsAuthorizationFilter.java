@@ -79,6 +79,11 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
             if (((HttpServletRequest) request).getMethod().toUpperCase().equals("OPTIONS")) {
                 return true;
             }
+
+            String URL = ((HttpServletRequest)request).getRequestURI();
+            if(URL.contains("ueditor") || URL.contains("AgAlarm")) {
+                return true;
+            }
         }
         return super.isAccessAllowed(request, response, mappedValue);
     }

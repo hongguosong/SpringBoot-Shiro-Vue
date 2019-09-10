@@ -1,0 +1,9 @@
+Hello.Proxy=hello:tcp -h localhost -p 10005:udp -h localhost -p 10005
+
+Clock.Subscriber.Endpoints=tcp:udp
+TopicManager.Proxy=DemoIceStorm/TopicManager:default -h localhost -p 10010
+
+
+
+
+

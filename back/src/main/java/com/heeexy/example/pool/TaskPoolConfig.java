@@ -30,6 +30,9 @@ class TaskPoolConfig {
         executor.setKeepAliveSeconds(600);
         executor.setThreadNamePrefix("taskExecutor-");
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+//        //当线程需要用到别的资源时，例如数据库
+//        executor.setWaitForTasksToCompleteOnShutdown(true);
+//        executor.setAwaitTerminationSeconds(60);
         return executor;
     }
 }

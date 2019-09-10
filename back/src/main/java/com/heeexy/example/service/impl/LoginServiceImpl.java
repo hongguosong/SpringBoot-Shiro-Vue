@@ -1,11 +1,13 @@
 package com.heeexy.example.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.heeexy.example.config.security.VertifyHelper;
 import com.heeexy.example.dao.LoginDao;
 import com.heeexy.example.service.LoginService;
 import com.heeexy.example.service.PermissionService;
 import com.heeexy.example.util.CommonUtil;
 import com.heeexy.example.util.constants.Constants;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -40,14 +42,20 @@ public class LoginServiceImpl implements LoginService {
     public JSONObject authLogin(JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
+        String md5Password = DigestUtils.md5Hex(password.getBytes());
         JSONObject returnData = new JSONObject();
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, md5Password);
         try {
             currentUser.login(token);
-            returnData.put("result", "success");
+            if (VertifyHelper.getInstance().vertify()) {
+                returnData.put("result", "success");
+            }else{
+                returnData.put("result", "授权文件已过期");
+            }
         } catch (AuthenticationException e) {
             returnData.put("result", "fail");
+            logger.error(e.getMessage());
         }
         return CommonUtil.successJson(returnData);
     }

@@ -1,5 +1,8 @@
 package com.heeexy.example.ice;
 
+import com.heeexy.example.util.SpringContextHolder;
+import org.springframework.core.env.Environment;
+
 public class IceThread extends Thread{
 
     private String[] args;
@@ -11,6 +14,8 @@ public class IceThread extends Thread{
     @Override
     public void run() {
         IceServiceEntrance entrance = IceServiceEntrance.getInstance();
-        entrance.main("ClientMonitor", args,"config.client");
+        Environment environment = SpringContextHolder.getBean(Environment.class);
+        String configClient = environment.getProperty("ice.config.file");
+        entrance.main("ClientMonitor", args,configClient);
     }
 }

@@ -52,6 +52,7 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/error", "anon");
         filterChainDefinitionMap.put("/gs-guide-websocket/*", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
+        filterChainDefinitionMap.put("/sys/ueditor/exec", "anon");
         filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

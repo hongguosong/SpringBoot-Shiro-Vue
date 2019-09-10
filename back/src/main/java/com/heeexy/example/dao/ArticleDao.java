@@ -34,6 +34,8 @@ public interface ArticleDao {
      */
     List<JSONObject> listArticle(JSONObject jsonObject);
 
+    List<JSONObject> getArticleById(Integer id);
+
     /**
      * 更新文章
      *

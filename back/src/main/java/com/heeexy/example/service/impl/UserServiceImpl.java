@@ -2,9 +2,16 @@ package com.heeexy.example.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.heeexy.example.dao.UserDao;
+import com.heeexy.example.service.LoginService;
 import com.heeexy.example.service.UserService;
 import com.heeexy.example.util.CommonUtil;
+import com.heeexy.example.util.constants.Constants;
 import com.heeexy.example.util.constants.ErrorEnum;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +30,9 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private LoginService loginService;
 
     /**
      * 装饰公司列表
@@ -50,6 +60,7 @@ public class UserServiceImpl implements UserService {
         if (exist > 0) {
             return CommonUtil.errorJson(ErrorEnum.E_10009);
         }
+        jsonObject.put("password", DigestUtils.md5Hex(jsonObject.getString("password")));
         userDao.addUser(jsonObject);
         return CommonUtil.successJson();
     }
@@ -74,8 +85,30 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public JSONObject updateUser(JSONObject jsonObject) {
-        userDao.updateUser(jsonObject);
-        return CommonUtil.successJson();
+
+
+        String username = jsonObject.getString("username");
+        String password = jsonObject.getString("oldPassword");
+
+        JSONObject newJsonObject = new JSONObject();
+        newJsonObject.put("username", username);
+        newJsonObject.put("password", password);
+
+        if(password.isEmpty()) {
+            jsonObject.put("newPassword", "");
+            userDao.updateUser(jsonObject);
+            return CommonUtil.successJson();
+        } else {
+            JSONObject resultJson = loginService.authLogin(newJsonObject);
+
+            if(resultJson.getJSONObject("returnData").getString("result").equals("success")) {
+                jsonObject.put("newPassword", DigestUtils.md5Hex(jsonObject.getString("newPassword").getBytes()));
+                userDao.updateUser(jsonObject);
+                return CommonUtil.successJson();
+            } else {
+                return CommonUtil.errorJson(ErrorEnum.E_10007);
+            }
+        }
     }
 
     /**

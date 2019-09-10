@@ -5,8 +5,8 @@
 
     <insert id="addArticle" parameterType="com.alibaba.fastjson.JSONObject">
         INSERT INTO article
-        (content) VALUES
-            ( #{content})
+        (author, title, content) VALUES
+            ( #{author}, #{title}, #{content} )
     </insert>
 
     <select id="countArticle" resultType="Integer">
@@ -15,16 +15,81 @@
         WHERE w.delete_status = '1'
     </select>
 
-    <select id="listArticle" resultType="com.alibaba.fastjson.JSONObject">
+    <!--<select id="listArticle" resultType="com.alibaba.fastjson.JSONObject">-->
+        <!--SELECT-->
+        <!--w.id id,-->
+        <!--w.author author,-->
+        <!--w.title title,-->
+        <!--w.content content,-->
+          <!--date_format(w.create_time, '%Y.%m.%d %T') createTime,-->
+          <!--date_format(w.update_time, '%Y.%m.%d %T') updateTime-->
+        <!--FROM article w-->
+        <!--WHERE w.delete_status = '1'-->
+              <!--ORDER BY w.id DESC-->
+        <!--LIMIT #{offSet}, #{pageRow}-->
+    <!--</select>-->
+    <resultMap id="articleMap" type="com.heeexy.example.util.model.ArticleOne2Many">
+        <id column="id" property="id"></id>
+        <result column="author" property="author"></result>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="createTime" property="createTime"></result>
+        <result column="updateTime" property="updateTime"></result>
+        <collection property="comments" ofType="com.alibaba.fastjson.JSONObject">
+            <id column="commentId" property="commentId"></id>
+            <result column="commentName" property="commentName"></result>
+            <result column="commentContent" property="commentContent"></result>
+            <result column="commentCreateTime" property="commentCreateTime"></result>
+        </collection>
+    </resultMap>
+
+    <select id="listArticle" resultMap="articleMap">
         SELECT
         w.id id,
+        w.author author,
+        w.title title,
         w.content content,
-          date_format(w.create_time, '%Y.%m.%d %T') createTime
+        date_format(w.create_time, '%Y.%m.%d %T') createTime,
+        date_format(w.update_time, '%Y.%m.%d %T') updateTime,
+        r.id commentId,
+        r.name commentName,
+        r.content commentContent,
+        date_format(r.create_time, '%Y.%m.%d %T') commentCreateTime
         FROM article w
+        LEFT JOIN comment r on w.id = r.article_id
         WHERE w.delete_status = '1'
-              ORDER BY w.id DESC
+        ORDER BY w.id DESC
         LIMIT #{offSet}, #{pageRow}
     </select>
+
+    <select id="getArticleById" resultMap="articleMap" parameterType="Integer">
+        SELECT
+        w.id id,
+        w.author author,
+        w.title title,
+        w.content content,
+        date_format(w.create_time, '%Y.%m.%d %T') createTime,
+        date_format(w.update_time, '%Y.%m.%d %T') updateTime,
+        r.id commentId,
+        r.name commentName,
+        r.content commentContent,
+        date_format(r.create_time, '%Y.%m.%d %T') commentCreateTime
+        FROM article w
+        LEFT JOIN comment r on w.id = r.article_id
+        WHERE w.delete_status = '1' AND w.id = #{id}
+        ORDER BY r.id DESC
+    </select>
+    <!--<select id="getArticleById" resultType="com.alibaba.fastjson.JSONObject" parameterType="Integer">-->
+        <!--SELECT-->
+        <!--w.id id,-->
+        <!--w.author author,-->
+        <!--w.title title,-->
+        <!--w.content content,-->
+        <!--date_format(w.create_time, '%Y.%m.%d %T') createTime,-->
+        <!--date_format(w.update_time, '%Y.%m.%d %T') updateTime-->
+        <!--FROM article w-->
+        <!--WHERE w.id = #{id}-->
+    <!--</select>-->
 
     <update id="updateArticle" parameterType="com.alibaba.fastjson.JSONObject">
         UPDATE article
